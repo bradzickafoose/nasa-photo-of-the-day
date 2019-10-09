@@ -1,13 +1,16 @@
 import React from "react";
+import NASAPhoto from "./components/NasaPhoto";
+import logo from "../assets/nasa-logo.svg";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun 🚀!
-      </p>
+      <div className="logo_container">
+        <img className="logo" src={logo} alt="NASA logo" />
+        <h1>Photo of the Day</h1>
+        <NASAPhoto />
+      </div>
     </div>
   );
 }
