@@ -6,12 +6,11 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <div className="logo_container">
+      <div className="header">
         <img className="logo" src={logo} alt="NASA logo" />
         <h1>Photo of the Day</h1>
-        <NASAPhoto />
-        
       </div>
+      <NASAPhoto />
     </div>
   );
 }
