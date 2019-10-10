@@ -1,6 +1,6 @@
 import React from "react";
-import NASAPhoto from "./components/NasaPhoto";
-import logo from "../assets/nasa-logo.svg";
+import NASAPhoto from "./NasaPhoto";
+import logo from "./assets/nasa-logo.svg";
 import "./App.css";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
         <img className="logo" src={logo} alt="NASA logo" />
         <h1>Photo of the Day</h1>
         <NASAPhoto />
+        
       </div>
     </div>
   );
