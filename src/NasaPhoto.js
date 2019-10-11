@@ -9,7 +9,7 @@ export default function NasaPhoto(props) {
         .get(`https://api.nasa.gov/planetary/apod?api_key=inPjaaJyTMnb0cJsR1l50D3EJ8sNVlM6wD7sADgx`)
         .then(response => {
             setPhotoState(response.data)
-            // console.log(response.data);
+            console.log(response.data);
         })
         .catch(error => {
             console.log("no data for you!", error);
@@ -18,7 +18,7 @@ export default function NasaPhoto(props) {
 
     if (!photoState.url) return <h3>Loading...</h3>;
 
-
+    // Component Styling
     const PhotoTitle = styled.h2`
         font-size: 3rem;
         color: #282828;
@@ -27,16 +27,20 @@ export default function NasaPhoto(props) {
 
     const PhotoImage = styled.img`
         max-width: 100%;
+        margin: 0 auto;
+        display: block;
     `;
 
     const PhotoHD = styled.a`
-        margin-top: 1rem;
+        clear: both;
+        margin-top: 2rem;
         color:#fc3d21;
         text-decoration: none;
 
         span:hover {
             text-decoration: underline;
         }
+
         &:before {
             content: "\\1F4F7";
             padding-right: 8px;
@@ -53,13 +57,14 @@ export default function NasaPhoto(props) {
     `;
 
     return (
-       <div class="container">
-        <PhotoImage src={photoState.url} alt={photoState.title}/> <br/>
+       <>
+        {/* Components */}
+        <PhotoImage src={photoState.url} alt={photoState.title}/>
         <PhotoHD href={photoState.hdurl}><span>View photo in HD</span></PhotoHD>
         <PhotoTitle>{photoState.title}</PhotoTitle>
         <PhotoExplanation>{photoState.explanation}</PhotoExplanation>
         <PhotoCopyright>Copyright &copy; {photoState.copyright}. All rights reserved.</PhotoCopyright>
-       </div>  
+       </>  
     );
 }
 
