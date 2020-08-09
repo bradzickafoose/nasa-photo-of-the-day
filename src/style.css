@@ -1,0 +1,252 @@
+/* Global variables */
+
+:root {
+  --color-light: #f7f7ff;
+  --color-dark: #000;
+  --color-grey: #919191;
+  --color-text: var(--color-light);
+  --color-background: var(--color-dark);
+  --color-neutral: var(--color-grey);
+  --color-link: var(--color-light);
+  --type-base: calc(1.6em + 0.5vw);
+  --font-sans:  -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto',
+  Roboto, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --space-small: 0.25em;
+  --space-medium: 1em;
+  --space-large: 2em;
+  --type-small: 85%;
+  --type-medium: 200%;
+  --type-large: 300%;
+}
+
+@media (min-width: 45em) {
+  :root {
+    --type-base: calc(0.9em + 0.9vw);
+  }
+}
+
+@media (min-width: 91em) {
+  :root {
+    --type-base: 2.2em;
+  }
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Scaffolding */
+
+::selection,
+::-moz-selection {
+  color: var(--color-dark);
+  background-color: var(--color-grey);
+}
+
+html {
+  font-size: 10px;
+  overflow-x: hidden;
+  scroll-padding: 10em 0 0 0;
+}
+
+body {
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: var(--type-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  text-decoration-thickness: 0.05em;
+  text-decoration-color: var(--color-light);
+}
+
+a,
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--color-link);
+  text-decoration-color: var(--color-grey);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-style: normal;
+  font-weight: 800;
+  margin: 0 0 var(--space-small) 0;
+  padding: 0;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: calc(var(--type-medium) - 15%);
+}
+
+@media (min-width: 45em) {
+  h1 {
+    font-size: var(--type-medium);
+  }
+}
+
+h2 {
+  margin: 0 0 var(--space-small) 0;
+  font-size: var(--type-medium);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 45em) {
+  h2 {
+    font-size: var(--type-large);
+  }
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 var(--space-medium) 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: [max] 1fr [l] 1fr [m] repeat(3, [m] 28vw) [m] 1fr [l] 1fr [max];
+}
+
+@media (min-width: 45em) {
+  .grid {
+    grid-template-columns:
+      [max] 1fr [l] minmax(11ch, 0.7fr) [m] repeat(3, [m] 21.66ch)
+      [m] minmax(11ch, 0.7fr) [l] 1fr [max];
+  }
+}
+
+@media (min-width: 91em) {
+  .grid {
+    grid-template-columns: [max] 1fr [l] 15ch [m] repeat(3, [m] 21.66ch) [m] 15ch [l] 1fr [max];
+  }
+}
+
+.grid > :not([class*='grid']) {
+  grid-column: m / m 4;
+}
+
+.grid__max {
+  grid-column: max / max 2;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+  margin-bottom: var(--space-small);
+}
+
+.header__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 20000;
+  margin: 0;
+  padding: 0.75rem;
+}
+
+@media (min-width: 45em) {
+  .header__nav {
+    flex-direction: row;
+    padding: 1rem;
+  }
+}
+
+.header__skip:hover,
+.header__skip:active,
+.header__skip:focus {
+  clip: auto !important;
+  top: 1rem;
+  left: 1rem;
+  width: auto;
+  height: auto;
+  z-index: 100000;
+}
+
+.loading,
+.footer {
+  margin: var(--space-medium) 0;
+  padding: var(--space-medium) 0;
+  text-align: center;
+}
+
+/* Helpers */
+.fade-in {
+  opacity: 0;
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.txt-small {
+  font-size: var(--type-small);
+}
+.txt-neutral {
+  color: var(--color-neutral);
+}
+.push--bottom {
+  margin-bottom: var(--space-medium);
+}
+
+.hide-screens {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
